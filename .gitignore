@@ -5,10 +5,3 @@ ecom-maven/ecom-model/target
 ecom-maven/ecom-dao/target
 ecom-maven/ecom-service/target
 ecom-maven/ecom-front/target
-ecom-maven/ecom-maven.iml
-ecom-maven/ecom-controller/ecom-controller.iml
-ecom-maven/ecom-main/ecom-main.iml
-ecom-maven/ecom-model/ecom-model.iml
-ecom-maven/ecom-dao/ecom-maven.iml
-ecom-maven/ecom-service/ecom-service.iml
-ecom-maven/ecom-front/ecom-front.iml
