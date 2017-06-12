@@ -1,0 +1,66 @@
+Ajout Article : 
+
+
+    {
+        "label": "montre",
+        "typeEnum": "LUXE",
+        "colorEnum": "OR",
+        "size": "N/A"
+    }
+	----------------------------------------------------------------
+	{
+        "label": "pull",
+        "typeEnum": "PRETAPORTER",
+        "colorEnum": "ROUGE",
+        "size": "XS"
+    }
+	--------------------------------------------------------------
+	{
+        "label": "eyeliner",
+        "typeEnum": "BEAUTE",
+        "colorEnum": "NOIR",
+        "size": "N/A"
+    }
+	
+	
+Ajout Catalogue : 
+
+
+	{
+		"label": "Femme - Accessoires",
+		"products": 
+		[
+			 {
+			"label": "montre",
+			"typeEnum": "LUXE",
+			"colorEnum": "OR",
+			"size": "N/A"
+			}
+		]
+	}
+	--------------------------------------------------------------
+	{
+		"label": "Femme - Vêtements",
+		"products":
+		[
+			{
+				"label": "pull",
+				"typeEnum": "PRETAPORTER",
+				"colorEnum": "ROUGE",
+				"size": "XS"
+			}
+		]
+	}
+	--------------------------------------------------------------
+	{
+		"label": "Femme - Maquillage",
+		"products": 
+		[
+			{
+				"label": "eyeliner",
+				"typeEnum": "BEAUTE",
+				"colorEnum": "NOIR",
+				"size": "N/A"
+			}
+		]
+	}

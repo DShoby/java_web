@@ -7,7 +7,8 @@ public enum ColorEnum {
     NOIR (4,"Noir"),
     BLANC (5,"Blanc"),
     ORANGE (6,"Orange"),
-    NONE (7,"N/A");
+    OR (7,"Or"),
+    NONE (8,"N/A");
 
     private String label;
     private int order;
