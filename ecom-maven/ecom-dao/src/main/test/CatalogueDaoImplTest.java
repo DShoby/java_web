@@ -1,5 +1,4 @@
 import com.gl.ecom.data.dao.CatalogueDaoImpl;
-import com.gl.ecom.data.dao.database.Database;
 import com.gl.ecom.data.model.Catalogue;
 import com.gl.ecom.data.model.MessageEnum;
 import org.junit.After;

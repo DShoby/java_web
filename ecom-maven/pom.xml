@@ -23,7 +23,6 @@
         <module>ecom-model</module>
         <module>ecom-dao</module>
         <module>ecom-service</module>
-        <module>ecom-controller</module>
         <module>ecom-main</module>
         <module>ecom-front</module>
         <module>ecom-rest</module>
@@ -60,6 +59,23 @@
     </dependencyManagement>
 
     <dependencies>
+        <!-- mongodb java driver -->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+        <!-- Spring data mongodb -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+            <version>1.10.3.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>1.5.3.RELEASE</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>

@@ -3,25 +3,17 @@ package com.gl.ecom.service;
 import com.gl.ecom.data.dao.ArticleDaoImpl;
 import com.gl.ecom.data.dao.CatalogueDaoImpl;
 import com.gl.ecom.data.model.*;
+import com.gl.ecom.data.others.MessageEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Scanner;
-
-import static com.gl.ecom.data.model.ColorEnum.checkColorEnum;
-import static com.gl.ecom.data.model.ColorEnum.printColors;
-import static com.gl.ecom.data.model.TypeEnum.checkTypeEnum;
-import static com.gl.ecom.data.model.TypeEnum.printTypes;
 
 @Service
 public class ArticleService {
 
     //region Variables
-    private static Scanner sc = new Scanner(System.in);
     SimpleDateFormat formatter = new SimpleDateFormat(" 'Le' dd/MM/yy 'à' H:mm:ss");
     @Autowired
     private CatalogueDaoImpl catalogueDao;
@@ -29,50 +21,37 @@ public class ArticleService {
     private ArticleDaoImpl articleDao;
     //endregion
 
-    public MessageEnum createArticle(String label, TypeEnum typeEnum, ColorEnum colorEnum, String size) throws  Exception{
-        return articleDao.createArticle(new Article(AutoIncrement.autoId(Article.class),label,typeEnum,colorEnum,size));
+    public MessageEnum createArticle(Article article) throws  Exception{
+        return articleDao.createArticle(article);
     }
 
-    public MessageEnum modifyArticle(String pk, String label, TypeEnum typeEnum, ColorEnum colorEnum, String size,Scanner scTest) throws Exception {
+    public MessageEnum updateArticle(Article article) throws Exception {
         //region vars
-        String primaryKey;
         Article modArticle;
         MessageEnum messageEnum;
         //endregion
-        primaryKey = pk;
-            if(articleDao.getArticle(primaryKey) == null){
+
+            if(articleDao.getArticle(article.getLabel()) == null){
                 messageEnum = MessageEnum.INPUT_ERROR_ARTICLE_INEXISTANT;
             }
             else{
-                modArticle = articleDao.getArticle(primaryKey);
-                modArticle.setLabel(label);
-                modArticle.setTypeEnum(typeEnum);
-                modArticle.setColorEnum(colorEnum);
-                modArticle.setSize(size);
-                modArticle.setLastModificationDate(formatter.format(new Date()));
-                modArticle.generateId(modArticle.getId(),modArticle.getColorEnum().getLabel(),modArticle.getSize());
-                articleDao.updateArticle(primaryKey,modArticle);
+                articleDao.updateArticle(article);
                 messageEnum = MessageEnum.MODIFIED_ARTICLE;
             }
         return messageEnum;
     }
 
-    public MessageEnum deleteArticle(String pk,boolean catalogueOnly) throws Exception {
+    public MessageEnum deleteArticle(String pk) throws Exception {
         MessageEnum messageEnum;
 
             if(articleDao.getArticle(pk) == null){
                 messageEnum = MessageEnum.INPUT_ERROR_ARTICLE_INEXISTANT;
-            }
-            else if(catalogueOnly) {
-                deleteArticleFromAllCatalogues(pk);
-                messageEnum =  MessageEnum.SUPPRESSED_ARTICLE;
             }
             else{
                 deleteArticleFromAllCatalogues(pk);
                 articleDao.deleteArticle(pk);
                 messageEnum =  MessageEnum.SUPPRESSED_ARTICLE;
             }
-
         return messageEnum;
     }
 
@@ -100,7 +79,7 @@ public class ArticleService {
                 linkArticle = articleDao.getArticle(primaryKeyArticle);
                 linkCatalogue = catalogueDao.getCatalogue(primaryKeyCatalogue);
                 linkCatalogue.addProduct(linkArticle);
-                catalogueDao.updateCatalogue(primaryKeyCatalogue,linkCatalogue);
+                //catalogueDao.updateCatalogue(primaryKeyCatalogue,linkCatalogue);
                 messageEnum = MessageEnum.LINK_MADE;
             }
 

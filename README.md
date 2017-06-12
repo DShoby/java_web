@@ -15,15 +15,15 @@ Sujet : libre mais architecture imposée
 manipulent les données de la couche domain
 - Une couche Web (un web service Rest)
 - La couche présentation est optionnelle :
-o Elle pourra être programmée avec des technologies comme Angular, React
-o Une utilisation de l’application via un plug-in comme Rest client est possible
+	-  Elle pourra être programmée avec des technologies comme Angular, React
+	- Une utilisation de l’application via un plug-in comme Rest client est possible
 
 
 **Découpage en itérations :**
 
 - Jalon 1 : la couche domain :
-o Un diagramme de classes UML
-o Le code
+	-  Un diagramme de classes UML
+	-  Le code
 - Jalon 2 : la couche service
 - Jalon 3 : la couche de sauvegarde dans la base de données
 - Jalon 4 : la couche Web et démonstration finale

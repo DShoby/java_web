@@ -1,5 +1,4 @@
 import com.gl.ecom.data.dao.ArticleDaoImpl;
-import com.gl.ecom.data.dao.database.Database;
 import com.gl.ecom.data.model.*;
 import org.junit.After;
 import org.junit.Before;

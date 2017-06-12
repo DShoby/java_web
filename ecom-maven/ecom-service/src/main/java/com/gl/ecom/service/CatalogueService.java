@@ -1,9 +1,8 @@
 package com.gl.ecom.service;
 
 import com.gl.ecom.data.dao.CatalogueDaoImpl;
-import com.gl.ecom.data.model.Article;
 import com.gl.ecom.data.model.Catalogue;
-import com.gl.ecom.data.model.MessageEnum;
+import com.gl.ecom.data.others.MessageEnum;
 import com.gl.ecom.data.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,8 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.Date;
-import java.util.Scanner;
 
 @Service
 public class CatalogueService {
@@ -32,19 +29,13 @@ public class CatalogueService {
         return MessageEnum.CATALOGUE_SAVED;
     }
 
-    public MessageEnum modifyCatalogue(String pk,String label) throws Exception {
-        String primaryKey,name;
+    public MessageEnum modifyCatalogue(Catalogue catalogue) throws Exception {
         MessageEnum messageEnum;
-        primaryKey = pk;
-        if(catalogueDao.getCatalogue(primaryKey) == null){ // si catalogue inexistant
+        if(catalogueDao.getCatalogue(catalogue.getLabel()) == null){ // si catalogue inexistant
             messageEnum =  MessageEnum.INPUT_ERROR_CATALOGUE_INEXISTANT;
         }
-        else{ // si modifié avec succès
-            name = label;
-            Catalogue modCatalogue = catalogueDao.getCatalogue(primaryKey);
-            modCatalogue.setLabel(name);
-            modCatalogue.setLastModificationDate(formatter.format(new Date()));
-            catalogueDao.updateCatalogue(primaryKey,modCatalogue);
+        else{
+            catalogueDao.updateCatalogue(catalogue);
             messageEnum =  MessageEnum.MODIFIED_CATALOGUE;
         }
         return messageEnum;
