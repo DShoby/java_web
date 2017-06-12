@@ -1,46 +1,33 @@
 package com.gl.ecom.data.model;
 
-import java.text.SimpleDateFormat;
+import com.gl.ecom.data.others.AutoIncrement;
+import org.springframework.data.annotation.Id;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Catalogue {
 
-
     //region vars
+    @Id
     private String id;
     private String label;
     private List<Product> productList;
-    private String creationDate;
-    private String lastModificationDate;
-    private SimpleDateFormat formatter = new SimpleDateFormat(" 'Le' dd/MM/yy 'à' H:mm:ss");
     //endregion
 
     //region constructors
-    public Catalogue(String label) {
-
-        this.label = label;
-        productList = new ArrayList<>();
-        id = AutoIncrement.autoId(Catalogue.class);
-        creationDate = formatter.format(new Date());
-        lastModificationDate = formatter.format(new Date());
+    public Catalogue() {
     }
 
-    public Catalogue() {
+    public Catalogue(String label) {
+
+        this.id = AutoIncrement.autoId(Catalogue.class);
+        this.label = label;
+        productList = new ArrayList<>();
     }
     //endregion
 
 
     //region getters and setters
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public void addProduct(Product p){
         productList.add(p);
     }
@@ -74,32 +61,5 @@ public class Catalogue {
         }
         return article;
     }
-
-    public String getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(String creationDate) {
-        this.creationDate = creationDate;
-    }
-
-    public String getLastModificationDate() {
-        return lastModificationDate;
-    }
-
-    public void setLastModificationDate(String lastModificationDate) {
-        this.lastModificationDate = lastModificationDate;
-    }
-
     //endregion
-
-
-    //region other methods
-    @Override
-    public String toString() {
-        return "Catalogue N°" + id + " : " + label;
-    }
-    //endregion
-
-
 }
